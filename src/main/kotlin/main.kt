@@ -2,21 +2,21 @@ data class Post(
     val id: Int,
     val owner_id: Int,
     val date: Int,
-    val text: String,
+    val text: String = " ",
     val replay_owner_id: Int,
     val friends_only: Boolean,
     val comments: Comments = Comments(),
-    val copyright: String,
+    val copyright: String = "zim",
     val likes: Likes = Likes(),
     val views: Views = Views(),
     val post_type: String,
     val signer_id: Int,
-    val can_pin: Boolean,
-    val can_delete: Boolean,
-    val can_edit: Boolean,
-    val marked_as_ads: Boolean,
-    val is_favorite: Boolean,
-    )
+    val can_pin: Boolean = true,
+    val can_delete: Boolean = true,
+    val can_edit: Boolean = true,
+    val marked_as_ads: Boolean = false,
+    val is_favorite: Boolean = false,
+)
 data class Likes(
     val count: Int = 0,
     val user_likes: Boolean = true,
@@ -41,5 +41,7 @@ fun main(){
     "Zukh", Likes(), Views(), "post", 3, can_pin = true, can_delete = false, false, true,
         is_favorite = true
     )
-    println(WallService.addPost(post))
+    val post2 = Post(2, 2, 2022 , replay_owner_id = 1, friends_only = false, comments = Comments(),
+        likes = Likes(), views = Views(), post_type = "repost", signer_id = 1)
+    println("${WallService.addPost(post)}\n${WallService.addPost(post2)}")
 }
