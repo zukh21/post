@@ -20,7 +20,7 @@ data class Post(
 data class Likes(
     val count: Int = 0,
     val user_likes: Boolean = true,
-    val can_publish: Boolean = true
+    val can_publish: Boolean = true,
 )
 data class Comments(
     var count: Int = 0,
@@ -43,5 +43,8 @@ fun main(){
     )
     val post2 = Post(2, 2, 2022 , replay_owner_id = 1, friends_only = false, comments = Comments(),
         likes = Likes(), views = Views(), post_type = "repost", signer_id = 1)
-    println("${WallService.addPost(post)}\n${WallService.addPost(post2)}")
+    val post3 = Post(3, 3, 2022 , replay_owner_id = 2, friends_only = true, comments = Comments(),
+        likes = Likes(), views = Views(), post_type = "repost", signer_id = 1)
+    println("${WallService.addPost(post)}\n${WallService.addPost(post2)}\n" +
+            "${WallService.addPost(post3)}")
 }
